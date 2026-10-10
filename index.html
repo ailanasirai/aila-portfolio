@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aila Nasir | AI/ML Researcher and Data Scientist</title>
+<meta name="description" content="Aila Nasir, AI/ML Researcher and Data Scientist. Portfolio under construction.">
+<meta property="og:title" content="Aila Nasir | AI/ML Researcher and Data Scientist">
+<meta property="og:description" content="Portfolio under construction. Generative AI, data science and research.">
+<meta name="theme-color" content="#EEEBFF">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EEEBFF;
+    --ink: #1B1740;
+    --muted: #5A5683;
+    --violet: #5B3DF5;
+    --teal: #00A896;
+    --pink: #FF5C8A;
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "DM Sans", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #14112E;
+      --ink: #F2EFFF;
+      --muted: #A9A4D6;
+      --violet: #8F7BFF;
+      --teal: #2DD4BF;
+      --pink: #FF7AA2;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    overflow: hidden;
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+  }
+  #net { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+  main {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 clamp(24px, 8vw, 120px);
+    pointer-events: none;
+  }
+  main > * { pointer-events: auto; }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--paper) 70%, transparent);
+    border: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
+    font-size: 14px;
+    color: var(--muted);
+    backdrop-filter: blur(6px);
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--teal);
+    animation: pulse 1.8s ease-out infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--teal) 60%, transparent); }
+    100% { box-shadow: 0 0 0 12px transparent; }
+  }
+  h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(3.4rem, 12.5vw, 9.5rem);
+    line-height: .92;
+    letter-spacing: -0.035em;
+    margin: 22px 0 18px;
+    background: linear-gradient(100deg, var(--ink) 0%, var(--ink) 40%, var(--violet) 75%, var(--pink) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .role {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.1rem, 2.6vw, 1.7rem);
+    margin: 0 0 8px;
+  }
+  .sub {
+    max-width: 46ch;
+    color: var(--muted);
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    line-height: 1.55;
+    margin: 0 0 32px;
+  }
+  .links { display: flex; flex-wrap: wrap; gap: 12px; }
+  .links a {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 14px;
+    border: 1.5px solid var(--ink);
+    background: color-mix(in srgb, var(--paper) 60%, transparent);
+    backdrop-filter: blur(6px);
+    transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .links a:hover, .links a:focus-visible {
+    transform: translateY(-3px);
+    background: var(--violet);
+    border-color: var(--violet);
+    color: #fff;
+  }
+  .links a:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+  .links a.primary { background: var(--ink); color: var(--paper); }
+  .load > * { animation: rise .9s cubic-bezier(.2,.8,.2,1) both; }
+  .load > *:nth-child(2) { animation-delay: .08s; }
+  .load > *:nth-child(3) { animation-delay: .16s; }
+  .load > *:nth-child(4) { animation-delay: .24s; }
+  .load > *:nth-child(5) { animation-delay: .32s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .load > *, .dot { animation: none; }
+    .links a { transition: none; }
+  }
+</style>
+</head>
+<body>
+<canvas id="net" aria-hidden="true"></canvas>
+
+<main class="load">
+  <div class="status"><span class="dot"></span>Live. Full portfolio is being built.</div>
+  <h1>Aila<br>Nasir</h1>
+  <p class="role">AI/ML Researcher and Data Scientist</p>
+  <p class="sub">Building with Generative AI, one experiment at a time. Projects, notebooks and case studies land here soon.</p>
+  <nav class="links" aria-label="Profiles">
+    <a class="primary" href="https://github.com/ailanasirai" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/aila-nasir" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.kaggle.com/ailanasirai" target="_blank" rel="noopener">Kaggle</a>
+  </nav>
+</main>
+
+<script>
+(function () {
+  var c = document.getElementById('net'), ctx = c.getContext('2d');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var W, H, nodes = [], mouse = { x: -9999, y: -9999 };
+  var palette = ['#5B3DF5', '#00A896', '#FF5C8A'];
+
+  function css(v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+
+  function resize() {
+    W = window.innerWidth; H = window.innerHeight;
+    c.width = W * dpr; c.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var count = Math.max(40, Math.min(110, Math.floor(W * H / 14000)));
+    nodes = [];
+    for (var i = 0; i < count; i++) {
+      nodes.push({
+        x: Math.random() * W, y: Math.random() * H,
+        vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35,
+        r: Math.random() * 2 + 1.2,
+        col: palette[i % 3]
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    var link = 140, line = css('--violet');
+    for (var i = 0; i < nodes.length; i++) {
+      var a = nodes[i];
+      if (!reduce) {
+        a.x += a.vx; a.y += a.vy;
+        if (a.x < 0 || a.x > W) a.vx *= -1;
+        if (a.y < 0 || a.y > H) a.vy *= -1;
+        var mx = a.x - mouse.x, my = a.y - mouse.y, md = Math.sqrt(mx * mx + my * my);
+        if (md < 120 && md > 0) { a.x += mx / md * 1.2; a.y += my / md * 1.2; }
+      }
+      for (var j = i + 1; j < nodes.length; j++) {
+        var b = nodes[j], dx = a.x - b.x, dy = a.y - b.y, d = Math.sqrt(dx * dx + dy * dy);
+        if (d < link) {
+          ctx.globalAlpha = (1 - d / link) * .35;
+          ctx.strokeStyle = line; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+      var cd = Math.hypot(a.x - mouse.x, a.y - mouse.y);
+      if (cd < 180) {
+        ctx.globalAlpha = (1 - cd / 180) * .8;
+        ctx.strokeStyle = '#FF5C8A'; ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+      }
+      ctx.globalAlpha = .9;
+      ctx.fillStyle = a.col;
+      ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, 6.2832); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    if (!reduce) requestAnimationFrame(draw);
+  }
+
+  function move(e) {
+    var t = e.touches ? e.touches[0] : e;
+    mouse.x = t.clientX; mouse.y = t.clientY;
+  }
+  window.addEventListener('mousemove', move);
+  window.addEventListener('touchmove', move, { passive: true });
+  window.addEventListener('touchstart', move, { passive: true });
+  window.addEventListener('mouseleave', function () { mouse.x = mouse.y = -9999; });
+  window.addEventListener('resize', function () { resize(); if (reduce) draw(); });
+
+  resize(); draw();
+})();
+</script>
+</body>
+</html>
